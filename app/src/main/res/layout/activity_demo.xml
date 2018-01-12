@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="vm"
+            type="co.instil.databinding.DemoViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/databindingButton"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:text="Click Me!"
+            android:visibility="@{vm.buttonVisible ? View.VISIBLE : View.GONE}"
+            android:onClick="@{() -> vm.buttonClicked()}"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:text="@{vm.text}"/>
+
+        <EditText
+            android:id="@+id/bindingAdapterEditText"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:inputType="text"
+            app:textLengthWarning="@{true}"/>
+
+        <co.instil.databinding.EditTextWithTextLimitCheck
+            android:id="@+id/customClassEditText"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:inputType="text"
+            app:customElementTextLengthWarning="@{true}"/>
+
+    </LinearLayout>
+
+</layout>
